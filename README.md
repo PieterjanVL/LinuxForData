@@ -3,9 +3,7 @@
 ## Oplossingen van de labo's:
 <ul>
 <li>
-
-[Labo 1](Labo1.md)
-
+<a href="https://pieterjanvl.github.io/LinuxForData/Labo1">Labo 1</a>
 </li>
   
 </ul>
