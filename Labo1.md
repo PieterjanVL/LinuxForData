@@ -1,5 +1,5 @@
 # Labo 1  
-### <p align="right">(<a href="https://pieterjanvl.github.io/LinuxForData/">Home</a>)</p>
+
 
 
 <div id="top"></div>
