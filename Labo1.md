@@ -1,4 +1,6 @@
-# Labo 1
+# Labo 1  
+### <p align="right">(<a href="https://pieterjanvl.github.io/LinuxForData/">Home</a>)</p>
+
 
 <div id="top"></div>
 
@@ -377,3 +379,5 @@ bestand1.txt  bestand2.txt`
 ## Oefening 12:
 
 12. Zorg er nu voor dat de gebruikers elkaars bestanden niet kunnen verwijderen. Als de gebruiker echter eigenaar is van het betreffende directory mag dit wel. Leg uit hoe je dit doet en controleer. Schrijf je gevolgde procedure op.
+
+<p align="right">(<a href="#top">back to top</a>)</p> <p align="left">(<a href="#top">Volgend Labo</a>)</p> <p align="center">(<a href="https://pieterjanvl.github.io/LinuxForData/">Home</a>)</p>

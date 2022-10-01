@@ -7,4 +7,6 @@
 </li>
   
 </ul>
-<u>
+
+
+<p>Opgepast: er kunnen fouten inzitten, indien je fouten ontdekt mag je me dit altijd melden via Discord: Pieterjan#8545. Veel plezier gewenst! </p>
