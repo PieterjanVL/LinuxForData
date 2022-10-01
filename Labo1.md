@@ -51,6 +51,21 @@
 		<li>
 		<a href="#oefening14">Oefening 7</a>
 		</li>
+		<li>
+		<a href="#oefening15">Oefening 8</a>
+		</li>
+		<li>
+		<a href="#oefening16">Oefening 9</a>
+		</li>
+		<li>
+		<a href="#oefening17">Oefening 10</a>
+		</li>
+		<li>
+		<a href="#oefening18">Oefening 11</a>
+		</li>
+		<li>
+		<a href="#oefening19">Oefening 12</a>
+		</li>
 	</ol>
 </details>
 
@@ -132,7 +147,7 @@ judo:x:1004:`
 <div id="oefening5"> </div>
 
 ## Oefening 5 : 
-1. Geef de gebruikte commando's om de gebruikers aan te maken en ook om te verifiëren of dit correct gebeurd is: <br>  <br>
+1. Geef de gebruikte commando's om de gebruikers aan te maken en ook om te verifiëren of dit correct gebeurd is: <br> `` <br>
 `osboxes@osboxes:/home$ sudo adduser --ingroup sporten bob` <br> toevoegen aan judo: `osboxes@osboxes:/home$ sudo usermod -a -G judo bob ` <br>
  als we nu de de info opvragen van bob: `osboxes@osboxes:/home$ id bob `<br>
 `uid=1002(bob) gid=1002(sporten) groups=1002(sporten),1004(judo)` <br>
@@ -245,7 +260,120 @@ Hint: https://www.ibm.com/docs/en/cabi/1.1.4?topic=premises-configuring-sudo-acc
 <div id="oefening8"> </div>
 
 ## Oefening 1:
-1. Maak als root onder /srv/ twee directories aan met de naam groep/verkoop/ en groep/inkoop/. Maak ook 2 groepen aan met de namen verkoop en inkoop. Maak twee gebruikers aan, margriet met primaire groep verkoop en roza, die als primaire groep inkoop heeft. Zorg dat de groepen eigenaar zijn van de overeenkomstige directories en dat margriet eigenaar is van directory verkoop en roza van het directory inkoop. Geef de gebruikte commando’s en controleer:
+1. Maak als root onder /srv/ twee directories aan met de naam groep/verkoop/ en groep/inkoop/. Maak ook 2 groepen aan met de namen verkoop en inkoop. Maak twee gebruikers aan, margriet met primaire groep verkoop en roza, die als primaire groep inkoop heeft. Zorg dat de groepen eigenaar zijn van de overeenkomstige directories en dat margriet eigenaar is van directory verkoop en roza van het directory inkoop. Geef de gebruikte commando’s en controleer: <br> <br>aanmaken groepen:  `root@osboxes:/srv/groep# mkdir verkoop en
+root@osboxes:/srv/groep# mdir inkoop` <br> `osboxes@osboxes:~$ sudo addgroup verkoop Adding group verkoop' (GID 1001) ...
+Done.
+osboxes@osboxes:~$ sudo addgroup inkoop
+Adding group inkoop' (GID 1005) ...
+Done.
+` Wachtwoord beide = p
+<br> <br> Aanmaken users roza en margriet plus toevoegen aan juiste groep `sudo adduser --ingroup inkoop roza` <br> `osboxes@osboxes:~$ id roza
+uid=1007(roza) gid=1005(inkoop) groups=1005(inkoop)` <br> <br> Groepen eigenaar maken van hun map: <br>Op dit moment is degene die de dir heeft aangemaakt owner in ons geval root: 
+`drwxr-xr-x 2 root root 4096 Oct  1 09:50 inkoop
+en drwxr-xr-x 2 root root 4096 Oct  1 09:50 verkoop
+` <br>We gaan nu de groepen en user owners maken van hun directory dus verkoop moet owner van zijn map idem voor inkoop. Ook moet Margriet owner worden van de dir verkoop en roza van inkoop: `root@osboxes:/srv/groep# sudo chown margriet:verkoop verkoop` <br> Resulteert in: `drwxr-xr-x 2 margriet verkoop 4096 Oct  1 09:50 verkoop`
+
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="oefening9"> </div>
+
+## Oefening 2:
+2. Zorg ervoor dat gebruikers en groepen uit de vorige stap alle permissies hebben. Geef het geschikte commando en controleer. <br> `root@osboxes:/srv/groep# chmod 775 verkoop` <br> Resulteert in: `drwxrwxr-x 2 margriet verkoop 4096 Oct  1 09:50 verkoop`
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="oefening10"> </div>
+
+## Oefening 3:
+
+3. Voeg een gebruiker, vb alice, toe aan de groep inkoop en verkoop en controleer. Geen van beide groepen zijn primair. <br> `root@osboxes:/srv/groep# usermod -aG verkoop alice` <br>Controle:  `root@osboxes:/srv/groep# id alice
+uid=1001(alice) gid=1002(sporten) groups=1002(sporten),1003(zwemmen),1001(verkoop),1005(inkoop)
+root@osboxes:/srv/groep# groups alice
+alice : sporten zwemmen verkoop inkoop
+`
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="oefening11"> </div>
+
+## Oefening 4:
+
+4. Log in als alice en ga naar de directory verkoop. Laat de gebruiker hier een leeg bestand, bestand1, aanmaken in de directory verkoop. (Indien je hier problemen ondervindt, log dan in via een andere terminalvenster). <br> `alice@osboxes:/srv/groep/verkoop$ touch bestand1.txt
+`
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="oefening12"> </div>
+
+## Oefening 5:
+
+5. Wie is nu eigenaar van bestand1 en wie de groepseigenaar? <br> `-rw-r--r-- 1 alice sporten 53 Oct  1 10:23 bestand1.txt` <br> We zien dat de user owner alice is en alice haar primaire groep wat op dat moment zwemmen was is de group owner van het bestand1.txt.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="oefening13"> </div>
+
+## Oefening 6:
+
+6. Zorg er nu voor dat de groepseigenaar van de directory verkoop automatisch de groepseigenaar wordt van alle bestanden en directories die onder verkoop gemaakt worden. Geef de gebruikte commando’s. <br> `root@osboxes:/srv/groep# chmod 2775 verkoop`
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="oefening14"> </div>
+
+## Oefening 7:
+
+7. Doe hetzelfde voor de directory inkoop. Geef de gebruikte commando’s. <br> `root@osboxes:/srv/groep# chmod 2775 inkoop`
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="oefening15"> </div>
+
+## Oefening 8:
+
+8. Verander opnieuw naar gebruiker alice en laat deze gebruiker een leeg bestand2 aanmaken in de directory verkoop. Geef de gebruikte commando’s. <br> `alice@osboxes:/srv/groep/verkoop$ touch bestand2.txt` <br>Dit resulteert in na ls -l: `-rw-r--r-- 1 alice verkoop 72 Oct  1 10:38 bestand2.txt
+` <br> We zien idd dat de groepowner automatisch verkoop is gewoorden van bestand2. Dit komt omdat de groepowner van de dir nu automatisch groupowner wordt van al de nieuwe bestand in zijn directory.
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="oefening16"> </div>
+
+## Oefening 9:
+
+9. Wie is nu eigenaar van bestand2 en wie groepseigenaar?
+<br> Userowner: Alice
+<br> Groupowner: verkoop
+<br> `-rw-r--r-- 1 alice verkoop 72 Oct  1 10:38 bestand2.txt`
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="oefening17"> </div>
+
+## Oefening 10:
+
+10. Laat nu gebruiker margriet een leeg bestand bestand3 aanmaken. Controleer de eigenaar van bestand3 en de groepseigenaar.Aanmaken bestand als Margriet: <br> `margriet@osboxes:/srv/groep/verkoop$ touch bestand3.txt`
+<br> `-rw-r--r-- 1 margriet verkoop  0 Oct  1 10:45 bestand3.txt` <br> Groepseigenaar: verkoop
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="oefening18"> </div>
+
+## Oefening 11:
+
+11. Laat nu gebruiker alice bestand3 verwijderen. Lukt dit?
+<br> `alice@osboxes:/srv/groep/verkoop$ rm bestand3.txt` <br>
+`rm: remove write-protected regular empty file 'bestand3.txt'? yes
+`
+<br>Conclussie: Ja dit lukt.
+<br> Controle: `alice@osboxes:/srv/groep/verkoop$ ls
+bestand1.txt  bestand2.txt`
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="oefening19"> </div>
+
+## Oefening 12:
+
+12. Zorg er nu voor dat de gebruikers elkaars bestanden niet kunnen verwijderen. Als de gebruiker echter eigenaar is van het betreffende directory mag dit wel. Leg uit hoe je dit doet en controleer. Schrijf je gevolgde procedure op.
