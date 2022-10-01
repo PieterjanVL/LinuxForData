@@ -147,7 +147,7 @@ judo:x:1004:`
 <div id="oefening5"> </div>
 
 ## Oefening 5 : 
-1. Geef de gebruikte commando's om de gebruikers aan te maken en ook om te verifiëren of dit correct gebeurd is: <br> `` <br>
+1. Geef de gebruikte commando's om de gebruikers aan te maken en ook om te verifiëren of dit correct gebeurd is: <br>  <br>
 `osboxes@osboxes:/home$ sudo adduser --ingroup sporten bob` <br> toevoegen aan judo: `osboxes@osboxes:/home$ sudo usermod -a -G judo bob ` <br>
  als we nu de de info opvragen van bob: `osboxes@osboxes:/home$ id bob `<br>
 `uid=1002(bob) gid=1002(sporten) groups=1002(sporten),1004(judo)` <br>
