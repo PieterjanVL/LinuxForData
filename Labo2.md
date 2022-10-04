@@ -79,15 +79,16 @@
 # Variabelen:
 
 ## Oefening 1:
-- PATH
-- HISTSIZE
-- UID
-- HOME
-- HOSTNAME
+- PATH: Seeing all the directories that are currently configured in your system’s $PATH variable is easy. Just use the echo command like this: <br>`/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+`
+- HISTSIZE: HISTFILESIZE is how many commands can be stored in the .bash_history file. HISTSIZE is the number of cached commands. Once you reach 1000 commands, the oldest commands will be discarded as new ones are saved
+- UID: Geeft de UID terug van de ingelogde user
+- HOME: Geeft de home directory terug van de ingelogde user
+- HOSTNAME:Geeft naam van de ingelogde user terug
 - LANG
 - USER
 - OSTYPE
-- PWD
+- PWD: Print Working Directory
 
  <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -135,5 +136,35 @@
  <p align="right">(<a href="#top">back to top</a>)</p>
 
 <div id="oefening6"> </div>
+
+
+
+## 2.4.2. Variabelen in scripts:
+Ik heb labo2.sh gebruikt ipv scrip.sh
+1. #!   /bin/bash <br>
+set -o nounset <br>
+echo "Hallo ${USER}"
+
+2. #!   /bin/bash
+<br>#set -o nounset
+<br>echo "Hallo ${persoon}"
+<br>Als we ./hey.sh uitvoeren krijgen we Hallo in de display te zien
+
+3. #!   /bin/bash
+<br>set -o nounset
+<br>echo "Hallo ${persoon}" <br>Door het toevoegen van set -o nounset worden variabelen die niet bestaan of gediclareerd zijn een gepaste foutmelding gegeven: ./hey.sh: line 4: persoon: unbound variable
+
+4. In terminal persoon="pj", neen dit werkt niet we blijven foutmelding krijgen. ``osboxes@osboxes:~/Documents/Labo2$npersoon="${USER}"``
+
+5. Oplossing voor bovenstaand probleem: <br> `osboxes@osboxes:~/Documents/Labo2$ export persoon="${USER}"` Het woord export ervoor.
+
+6. `osboxes@osboxes:~/Documents/Labo2$ unset persoon` zorgt ervoor dat de variabele in de termin persoon in ons geval verwijderd wordt.
+<br> Variabele persoon is nu niet meer gedifinieerd kunnen we variabele persoon en het bestand labo2.sh op in lijn in de terminal laten uitvoeren?
+<br> `osboxes@osboxes:~/Documents/Labo2$ persoon="${USER}" ./labo2.sh `, vreemd daarna kunnen we de variabelen persoon NIET meer opvragen! `osboxes@osboxes:~/Documents/Labo2$ persoon` <br> persoon: command not found
+
+
+
+
+
 
 
