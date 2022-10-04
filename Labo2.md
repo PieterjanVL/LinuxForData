@@ -95,7 +95,7 @@
 
 
 
-# Variabelen in scripts::
+# Variabelen in scripts:
 
 ## Oefening 1:
 1.Op een Linux-systeem van de Debian-familie kan je een lijst van geïnstalleerde software opvragen met het commando apt list --installed. Doe dit op jouw Linux-Mint VM. Het commando genereert heel wat output, zo veel dat je misschien zelfs niet de volledige lijst kan zien in de terminal. Zorg er voor dat je telkens een pagina te zien krijgt en dat je op spatie kan drukken voor de volgende pagina. <br> `osboxes@osboxes:~$ apt list --installed | more`  of less, nog beter.
