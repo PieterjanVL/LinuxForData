@@ -5,6 +5,9 @@
 <li>
 <a href="https://pieterjanvl.github.io/LinuxForData/Labo1">Labo 1</a>
 </li>
+<li>
+<a href="https://pieterjanvl.github.io/LinuxForData/Labo2">Labo 2</a>
+</li>
   
 </ul>
 
